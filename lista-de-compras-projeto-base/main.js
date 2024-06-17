@@ -5,7 +5,7 @@ const form = document.getElementById("form-itens")
 const itensInput = document.getElementById("receber-item")
 const ulItens = document.getElementById("lista-de-itens")
 const ulItensComprados = document.getElementById("itens-comprados")
-const listaRecuperada = localStorage.getItem('listaDeItem')
+const listaRecuperada = localStorage.getItem('listaDeItens')
 
 function atulizaLocalStorage() {
     localStorage.setItem('listaDeItens', JSON.stringify(listaDeItens))
@@ -13,12 +13,14 @@ function atulizaLocalStorage() {
 
 
 
-if(listaRecuperada) {
+if (listaRecuperada) {
     listaDeItens = JSON.parse(listaRecuperada)
     mostrarItem()
 } else {
     listaDeItens = []
 }
+
+// (valores omitidos, 0, null, NaN, undefined, "", false) << retornam false
 
 form.addEventListener("submit", function (evento) {
     evento.preventDefault()
